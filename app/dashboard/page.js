@@ -152,7 +152,7 @@ export default function DashboardPage() {
         {/* Greeting */}
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-white mb-1">
-            Hey {greeting} 👋
+            Hey {greeting},
           </h2>
           <p className="text-zinc-400">
             {getDaysUntilTrip() > 0

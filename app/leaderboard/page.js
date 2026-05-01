@@ -77,24 +77,27 @@ export default function LeaderboardPage() {
           </div>
         ) : (
           <>
-            {/* Filter pills */}
-            <div className="mb-6 overflow-x-auto -mx-4 px-4">
-              <div className="flex gap-2 min-w-max pb-2">
-                {FILTERS.map((f) => (
-                  <button
-                    key={f.key}
-                    onClick={() => setFilter(f.key)}
-                    className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-medium
-                               transition-all duration-200 whitespace-nowrap
-                               ${filter === f.key
-                                 ? 'bg-lime-400/15 text-lime-400 border border-lime-400/30'
-                                 : 'bg-dark-700/50 text-zinc-500 border border-zinc-800 hover:border-zinc-700 hover:text-zinc-300'
-                               }`}
-                  >
-                    <span>{f.emoji}</span>
-                    <span>{f.label}</span>
-                  </button>
-                ))}
+            {/* Filter dropdown */}
+            <div className="mb-6 flex items-center justify-between">
+              <span className="text-sm text-zinc-500">Showing</span>
+              <div className="relative">
+                <select
+                  value={filter}
+                  onChange={(e) => setFilter(e.target.value)}
+                  className="appearance-none px-4 py-2.5 pr-9 bg-dark-700 border border-zinc-800 rounded-xl
+                             text-sm text-white font-medium outline-none cursor-pointer
+                             focus:border-lime-400/50 focus:ring-1 focus:ring-lime-400/20
+                             transition-all"
+                >
+                  {FILTERS.map((f) => (
+                    <option key={f.key} value={f.key}>
+                      {f.emoji} {f.label}
+                    </option>
+                  ))}
+                </select>
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none text-xs">
+                  ▾
+                </div>
               </div>
             </div>
 

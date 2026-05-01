@@ -347,7 +347,7 @@ export default function SettingsPage() {
           disabled={saving || !displayName.trim()}
           className="w-full py-4 bg-lime-400 text-dark-900 font-bold rounded-xl
                      hover:bg-lime-300 transition-all duration-200 disabled:opacity-50
-                     hover:shadow-[0_0_30px_rgba(163,230,53,0.3)]
+                     hover:shadow-[0_0_30px_rgba(251,146,60,0.3)]
                      active:scale-[0.98] animate-slide-up mb-6"
           style={{ animationDelay: '200ms' }}
         >

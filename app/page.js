@@ -60,7 +60,7 @@ export default function Home() {
             onClick={() => router.push('/login')}
             className="px-8 py-3.5 bg-lime-400 text-dark-900 font-bold rounded-xl
                        hover:bg-lime-300 transition-all duration-200
-                       hover:shadow-[0_0_30px_rgba(163,230,53,0.3)]
+                       hover:shadow-[0_0_30px_rgba(251,146,60,0.3)]
                        active:scale-95"
           >
             Log In

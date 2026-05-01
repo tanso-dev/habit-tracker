@@ -7,13 +7,14 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Dela Gothic One"', 'cursive'],
-        body: ['"DM Sans"', 'sans-serif'],
+        display: ['"Bebas Neue"', 'sans-serif'],
+        body: ['"Outfit"', 'sans-serif'],
       },
       colors: {
         lime: {
-          400: '#a3e635',
-          500: '#84cc16',
+          300: '#fdba74',
+          400: '#fb923c',
+          500: '#f97316',
         },
         dark: {
           900: '#0a0a0b',

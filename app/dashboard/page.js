@@ -273,7 +273,7 @@ export default function DashboardPage() {
                          active:scale-[0.98] disabled:opacity-50
                          ${submitted
                            ? 'bg-dark-700 border border-lime-400/30 text-lime-400'
-                           : 'bg-lime-400 text-dark-900 hover:bg-lime-300 hover:shadow-[0_0_30px_rgba(163,230,53,0.3)]'
+                           : 'bg-lime-400 text-dark-900 hover:bg-lime-300 hover:shadow-[0_0_30px_rgba(251,146,60,0.3)]'
                          }`}
             >
               {saving

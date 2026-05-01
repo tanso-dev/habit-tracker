@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap');
-
 :root {
   --bg-primary: #0a0a0b;
   --bg-secondary: #141416;
@@ -11,15 +9,15 @@
   --bg-hover: #2a2a30;
   --text-primary: #f5f5f5;
   --text-secondary: #a1a1aa;
-  --accent: #a3e635;
-  --accent-dim: rgba(163, 230, 53, 0.15);
+  --accent: #fb923c;
+  --accent-dim: rgba(251, 146, 60, 0.15);
   --danger: #ef4444;
 }
 
 body {
   background: var(--bg-primary);
   color: var(--text-primary);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Outfit', sans-serif;
 }
 
 /* Custom scrollbar */

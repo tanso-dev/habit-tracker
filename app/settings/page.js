@@ -152,7 +152,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <main className="min-h-screen pb-28 overflow-x-hidden">
+    <main className="min-h-screen pb-40 overflow-x-hidden">
       <header className="border-b border-zinc-800/50">
         <div className="max-w-lg mx-auto px-4 py-4 flex items-center justify-center">
           <h1 className="font-display text-xl text-lime-400">SQUAD LT</h1>

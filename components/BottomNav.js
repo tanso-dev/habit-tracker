@@ -44,29 +44,35 @@ export default function BottomNav() {
   }
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 border-t border-zinc-800/60"
-         style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
-      {/* Solid background that extends behind Safari's bottom bar */}
-      <div className="absolute inset-0 bg-dark-900" style={{ bottom: 'calc(-1 * env(safe-area-inset-bottom, 0px))', top: 0 }} />
-      <div className="relative max-w-lg mx-auto flex items-center justify-around py-2 px-4">
-        {NAV_ITEMS.map((item) => {
-          const isActive = pathname === item.href;
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`flex flex-col items-center gap-0.5 px-5 py-1.5 rounded-xl transition-all duration-200
-                         ${isActive
-                           ? 'text-lime-400'
-                           : 'text-zinc-600 hover:text-zinc-400'
-                         }`}
-            >
-              {item.icon(isActive)}
-              <span className="text-[10px] font-medium tracking-wide">{item.label}</span>
-            </Link>
-          );
-        })}
-      </div>
-    </nav>
+    <>
+      {/* Spacer to push page content above the nav */}
+      <div className="h-20" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }} />
+      
+      <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-zinc-800/60">
+        {/* Solid background extending well past the bottom for Safari's URL bar */}
+        <div className="absolute left-0 right-0 bg-dark-900" style={{ top: 0, bottom: '-100px' }} />
+        <div className="relative max-w-lg mx-auto flex items-center justify-around py-3 px-4">
+          {NAV_ITEMS.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`flex flex-col items-center gap-0.5 px-5 py-1.5 rounded-xl transition-all duration-200
+                           ${isActive
+                             ? 'text-lime-400'
+                             : 'text-zinc-600 hover:text-zinc-400'
+                           }`}
+              >
+                {item.icon(isActive)}
+                <span className="text-[10px] font-medium tracking-wide">{item.label}</span>
+              </Link>
+            );
+          })}
+        </div>
+        {/* Extra space for Safari safe area */}
+        <div className="relative" style={{ height: 'env(safe-area-inset-bottom, 0px)' }} />
+      </nav>
+    </>
   );
 }

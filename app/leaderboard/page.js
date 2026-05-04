@@ -58,7 +58,7 @@ export default function LeaderboardPage() {
   }
 
   return (
-    <main className="min-h-screen pb-28">
+    <main className="min-h-screen pb-40">
       {/* Header */}
       <header className="border-b border-zinc-800/50">
         <div className="max-w-lg mx-auto px-4 py-4 flex items-center justify-center">

@@ -83,29 +83,43 @@ export async function POST(request) {
     if (dob !== undefined) {
       await db.execute({
         sql: 'UPDATE users SET dob = ? WHERE id = ?',
-        args: [dob, user.userId],
+        args: [dob || null, user.userId],
       });
     }
 
     if (height_cm !== undefined) {
-      const h = parseFloat(height_cm);
-      if (isNaN(h) || h < 50 || h > 275) {
-        return NextResponse.json({ error: 'Height must be between 50 and 275 cm' }, { status: 400 });
+      if (height_cm === null) {
+        await db.execute({
+          sql: 'UPDATE users SET height_cm = NULL WHERE id = ?',
+          args: [user.userId],
+        });
+      } else {
+        const h = parseFloat(height_cm);
+        if (isNaN(h) || h < 50 || h > 275) {
+          return NextResponse.json({ error: 'Height must be between 50 and 275 cm' }, { status: 400 });
+        }
+        await db.execute({
+          sql: 'UPDATE users SET height_cm = ? WHERE id = ?',
+          args: [h, user.userId],
+        });
       }
-      await db.execute({
-        sql: 'UPDATE users SET height_cm = ? WHERE id = ?',
-        args: [h, user.userId],
-      });
     }
 
     if (gender !== undefined) {
-      if (!['male', 'female'].includes(gender)) {
-        return NextResponse.json({ error: 'Invalid gender' }, { status: 400 });
+      if (gender === null) {
+        await db.execute({
+          sql: 'UPDATE users SET gender = NULL WHERE id = ?',
+          args: [user.userId],
+        });
+      } else {
+        if (!['male', 'female'].includes(gender)) {
+          return NextResponse.json({ error: 'Invalid gender' }, { status: 400 });
+        }
+        await db.execute({
+          sql: 'UPDATE users SET gender = ? WHERE id = ?',
+          args: [gender, user.userId],
+        });
       }
-      await db.execute({
-        sql: 'UPDATE users SET gender = ? WHERE id = ?',
-        args: [gender, user.userId],
-      });
     }
 
     if (color !== undefined) {

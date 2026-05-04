@@ -101,11 +101,10 @@ export default function SettingsPage() {
       const body = {
         display_name: displayName,
         color: selectedColor,
+        dob: dob || null,
+        height_cm: heightCm ? Math.round(heightCm) : null,
+        gender: gender || null,
       };
-
-      if (dob) body.dob = dob;
-      if (heightCm) body.height_cm = Math.round(heightCm);
-      if (gender) body.gender = gender;
 
       const res = await fetch('/api/profile', {
         method: 'POST',
@@ -153,7 +152,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <main className="min-h-screen pb-28">
+    <main className="min-h-screen pb-28 overflow-x-hidden">
       <header className="border-b border-zinc-800/50">
         <div className="max-w-lg mx-auto px-4 py-4 flex items-center justify-center">
           <h1 className="font-display text-xl text-lime-400">SQUAD LT</h1>
@@ -220,10 +219,10 @@ export default function SettingsPage() {
               type="date"
               value={dob}
               onChange={(e) => setDob(e.target.value)}
-              className="w-full px-4 py-3 bg-dark-700 border border-zinc-800 rounded-xl
-                         text-white outline-none
+              className="w-full max-w-full px-4 py-3 bg-dark-700 border border-zinc-800 rounded-xl
+                         text-white outline-none box-border
                          focus:border-lime-400/50 focus:ring-1 focus:ring-lime-400/20 transition-all
-                         [color-scheme:dark]"
+                         [color-scheme:dark] [-webkit-appearance:none]"
               max={new Date().toISOString().split('T')[0]}
             />
           </div>

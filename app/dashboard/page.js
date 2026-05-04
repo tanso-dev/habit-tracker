@@ -12,8 +12,16 @@ const HABITS = [
   { id: 'sleep', label: '7+ Hrs Sleep', emoji: '😴', description: 'Got at least 7 hours of sleep' },
 ];
 
+function getLocalDateStr(date) {
+  const d = date || new Date();
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
 function getTodayDate() {
-  return new Date().toISOString().split('T')[0];
+  return getLocalDateStr(new Date());
 }
 
 function getDaysUntilTrip() {
@@ -35,7 +43,7 @@ function getDateOptions() {
   for (let i = 0; i < 10; i++) {
     const d = new Date(today);
     d.setDate(d.getDate() - i);
-    const value = d.toISOString().split('T')[0];
+    const value = getLocalDateStr(d);
     let label;
     if (i === 0) {
       label = 'Today';

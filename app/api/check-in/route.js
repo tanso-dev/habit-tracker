@@ -7,6 +7,7 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 function getTodayDate() {
+  // Fallback only — client should always send the date in the user's local timezone
   return new Date().toISOString().split('T')[0];
 }
 
@@ -18,8 +19,11 @@ function isValidDate(dateStr) {
 }
 
 function isNotFuture(dateStr) {
-  const today = getTodayDate();
-  return dateStr <= today;
+  // Allow a 1-day buffer to handle timezone differences between client and server
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const tomorrowStr = tomorrow.toISOString().split('T')[0];
+  return dateStr <= tomorrowStr;
 }
 
 export async function GET(request) {

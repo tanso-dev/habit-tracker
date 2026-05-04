@@ -44,8 +44,11 @@ export default function BottomNav() {
   }
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 bg-dark-900/95 backdrop-blur-md border-t border-zinc-800/60">
-      <div className="max-w-lg mx-auto flex items-center justify-around py-2 px-4">
+    <nav className="fixed bottom-0 left-0 right-0 z-40 border-t border-zinc-800/60"
+         style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
+      {/* Solid background that extends behind Safari's bottom bar */}
+      <div className="absolute inset-0 bg-dark-900" style={{ bottom: 'calc(-1 * env(safe-area-inset-bottom, 0px))', top: 0 }} />
+      <div className="relative max-w-lg mx-auto flex items-center justify-around py-2 px-4">
         {NAV_ITEMS.map((item) => {
           const isActive = pathname === item.href;
           return (
@@ -64,8 +67,6 @@ export default function BottomNav() {
           );
         })}
       </div>
-      {/* Safe area for phones with home indicators */}
-      <div className="h-[env(safe-area-inset-bottom)]" />
     </nav>
   );
 }
